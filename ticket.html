@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy New Year</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    background: radial-gradient(circle at top left, #2a003b, #000);
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    overflow: hidden;
+}
+
+/* stars */
+body::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(#fff 1px, transparent 1px);
+    background-size: 80px 80px;
+    opacity: 0.2;
+}
+
+.container {
+    text-align: center;
+    z-index: 2;
+}
+
+/* Ticket */
+.ticket {
+    width: 300px;
+    background: #0c1b33;
+    border-radius: 20px;
+    padding: 30px 20px;
+    box-shadow: 0 0 30px rgba(255,215,0,0.5);
+    border: 2px solid gold;
+    position: relative;
+}
+
+.ticket::before {
+    content: '';
+    position: absolute;
+    left: -15px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    background: #0c1b33;
+    border-radius: 50%;
+    border: 2px solid gold;
+    box-shadow: 0 0 30px rgba(255,215,0,0.5);
+}
+
+.ticket::after {
+    content: '';
+    position: absolute;
+    right: -15px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    background: #0c1b33;
+    border-radius: 50%;
+    border: 2px solid gold;
+    box-shadow: 0 0 30px rgba(255,215,0,0.5);
+}
+
+.ticket-icon {
+    width: 50px;
+    height: 50px;
+    margin: auto;
+    background: gold;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: #000;
+    margin-bottom: 15px;
+}
+
+.ticket h1 {
+    margin: 0;
+    color: gold;
+    letter-spacing: 2px;
+}
+
+.ticket small {
+    color: #aaa;
+    display: block;
+    margin-top: 5px;
+}
+
+.quote {
+    margin: 20px 0;
+    font-style: italic;
+    color: #ffd700;
+}
+
+.claim {
+    margin-top: 25px;
+    color: #ddd;
+    cursor: pointer;
+    font-size: 15px;
+    letter-spacing: 1px;
+}
+
+.claim:hover {
+    color: gold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <div class="ticket">
+        <div class="ticket-icon">🎟</div>
+        <h1>GOLDEN TICKET</h1>
+        <small>VALID FOR EVERY DAY AHEAD</small>
+
+        <div class="quote">"A little promise — Unlimited Love & Smiles"</div>
+        <small>No expiration date</small>
+    </div>
+
+    <div class="claim" onclick="goNext()">CLAIM YOUR HUG ➜</div> 
+</div>
+
+<script>
+function goNext(){
+    window.location.href = "final.html";
+}
+</script>
+
+</body>
+</html>

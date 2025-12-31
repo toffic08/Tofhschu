@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy New Year</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Great+Vibes&display=swap" rel="stylesheet">
+<style>
+*{ margin:0; padding:0; box-sizing:border-box; }
+body{ height:100vh; background: radial-gradient(circle at top,#120018,#021017); display:flex; align-items:center; justify-content:center; color:white; overflow:hidden; font-family:'Poppins',sans-serif }
+.stars::before{ content:"✨ ✨ ✨ ✨ ✨"; position:absolute; top:18%; left:8%; opacity:0.28 }
+.container{ text-align:center }
+.title{ font-size:26px; margin-bottom:6px; font-family:'Great Vibes',cursive; color:#ffdbe9 }
+.subtitle{ font-size:14px; opacity:0.85; margin-bottom:18px }
+.card{ width:320px; padding:12px; border-radius:18px; background: linear-gradient(135deg,#ff9ae5,#b66dff); box-shadow:0 12px 40px rgba(200,100,255,0.12); cursor:pointer; transition:0.4s }
+@media (max-width:1080px){ .card{ width:100vw; height:100vh; padding:0; border-radius:0; }}
+.card:hover{ transform:scale(1.03) }
+.inner-card{ background:#fff8ee; border-radius:12px; padding:20px 14px; color:#333; position:relative }
+.inner-card h1{ font-size:36px; margin-bottom:10px; font-family:'Great Vibes',cursive }
+.year{ color:#ff5722; font-size:40px; font-weight:bold }
+#message{ display:none; max-height:70vh; overflow:auto; margin-top:20px; padding:14px; background:#fff; border-radius:10px; font-size:16px; line-height:1.6; text-align:left }
+.close-btn{ background:transparent; border:0; font-size:18px; color:#444; cursor:pointer; padding:6px 10px; border-radius:8px }
+.card.open{ position:fixed; inset:6vh 6vw; width:auto; height:auto; z-index:1000; box-shadow:0 30px 80px rgba(0,0,0,0.6); border-radius:14px }
+</style> 
+</head>
+
+<body>
+
+<div class="container">
+    <div class="title">For my Cutiepie :)</div>
+    <div class="subtitle">Tap the card to read</div>
+
+    <div class="card" onclick="showMessage()">
+        <div class="inner-card">
+            <h1>HAPPY<br>NEW YEAR</h1>
+            <div class="year">2026</div>
+            <div style="text-align:right"><button class="close-btn" onclick="closeMessage()">✕</button></div>
+            <div id="message" style="display:none;">
+                Today is the most special day for me, because it’s the birthday of the most beautiful person in my life — you. On this special day, I just want to tell you how much you mean to me. Ninna life-ge barodu nanage bhagya anisutte. You are not just my girlfriend, you are my happiness, my peace, and my everything 💕<br><br> 
+                From the day you came into my life, everything changed for the better. Ninna smile nodidaga nan hrudaya calm aagutte. Ninna voice kelidaga, all my stress just disappears. You have no idea how special you are to me. Ninna presence alone makes my whole day beautiful.<br><br>
+                You are the reason behind my smile, my motivation, and my strength. Sometimes life gets hard, but whenever I think of you, I feel strong again. Ninna care, ninna understanding, ninna love — everything about you is so pure and real. Naanu lucky person, because I have you in my life 💖<br><br>
+                On your birthday, I want to tell you one thing clearly — I love you more than anything in this world. Words are not enough to explain my feelings, but still I’ll try. Ninna jothe iruvudu andre peace, happiness, and comfort. Ninna jothe future imagine madidaga, I feel safe and happy. I want to walk with you in every phase of life — in happiness, in problems, in success, and even in tough times.<br><br>
+                Naanu perfect alla, but ninna preeti matra true and pure. I promise to always support you, respect you, and love you with all my heart. Ninna dreams ellavu true aagali, ninna face mele sada smile irali, ninna life full of happiness aagali 💫<br><br>
+                Today, I pray to God to give you good health, success, peace, and endless joy. You deserve the best, my love. Ninna life alli sorrow andre word ne irabeku. I want to be the reason behind your smile and the person who stands beside you always.<br><br>
+                Happy Birthday, my beautiful Harshitha ❤️<br>
+                Neevu nanna life-na most precious gift 💝<br>
+                Today, tomorrow, and forever — I am yours.<br>
+                I love you more than words can ever explain 🥰🎂✨
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+function showMessage(){
+    const card = document.querySelector('.card');
+    card.classList.add('open');
+    document.getElementById('message').style.display = 'block';
+    document.body.style.overflow = 'hidden';
+    window.scrollTo({top:0,behavior:'smooth'});
+}
+function closeMessage(){
+    const card = document.querySelector('.card');
+    card.classList.remove('open');
+    document.getElementById('message').style.display = 'none';
+    document.body.style.overflow = '';
+}
+</script> 
+
+</body>
+</html>

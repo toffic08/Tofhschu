@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Little Surprise</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Great+Vibes&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg1:#120016;
+  --bg2:#2b0033;
+  --accent:#ff7adf;
+  --muted:#ffd6e8;
+  --card-bg: rgba(255,255,255,0.06);
+}
+    body {
+        margin: 0;
+        height: 100vh;
+        background: radial-gradient(circle at top left, var(--bg2), #000);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: 'Poppins', sans-serif;
+        color: white;
+    }
+
+    .card {
+        width: 320px;
+        padding: 36px 24px;
+        border-radius: 24px;
+        background: var(--card-bg);
+        backdrop-filter: blur(10px);
+        text-align: center;
+        box-shadow: 0 10px 40px rgba(255, 0, 150, 0.12);
+    }
+
+    .title {
+        font-size: 28px;
+        color: var(--muted);
+        margin-bottom: 10px;
+        font-family: 'Great Vibes', cursive;
+        letter-spacing: 1px;
+    }
+
+    .subtitle {
+        font-size: 14px;
+        color: #ffdbe9;
+        margin-bottom: 24px;
+    }
+
+    .heart-container {
+        width: 110px;
+        height: 110px;
+        border-radius: 50%;
+        border: 2px solid rgba(255, 105, 180, 0.25);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: auto;
+        position: relative;
+        cursor: pointer;
+        transition: transform 0.15s ease;
+        box-shadow: 0 6px 30px rgba(255,105,180,0.08);
+    }
+
+    .heart {
+        font-size: 48px;
+        color: hotpink;
+        transition: transform 0.15s ease;
+    }
+
+    .heart.pulse {
+        animation: pulse 0.6s infinite alternate;
+    }
+
+    @keyframes pulse {
+        from { transform: scale(1); }
+        to { transform: scale(1.15); }
+    }
+
+    .hold-text {
+        margin-top: 15px;
+        font-size: 13px;
+        color: #ffcfe6;
+    }
+
+    .progress {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        border: 4px solid transparent;
+        border-top: 4px solid var(--accent);
+        animation: none;
+    }
+
+    @keyframes rotate {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+    }
+
+    .success {
+        margin-top: 20px;
+        color: var(--accent);
+        font-size: 18px;
+        display: none;
+        opacity: 0;
+        transition: opacity 0.4s ease;
+    }
+
+    .hearts { position: absolute; inset:0; pointer-events:none; }
+    .heart-particle{ position:absolute; width:12px; height:12px; transform:translate(-50%,-50%); opacity:0.9; animation:floatUp 1s ease-out forwards; }
+    @keyframes floatUp{ to{ transform:translate(-50%,-160%); opacity:0; } }
+</style>
+</head>
+<body>
+
+<div class="card">
+    <div class="title">A little surprise for you</div>
+    <div class="subtitle">Before this year begins</div>
+
+    <div class="heart-container" id="holdBtn">
+        <div class="progress" id="progress"></div>
+        <div class="heart">❤️</div>
+    </div>
+
+    <div class="hold-text">Press and hold to open my heart</div>
+    <div class="success" id="successMsg">💖 Surprise unlocked!</div>
+    <div class="hearts" id="hearts"></div> 
+</div>
+
+<script>
+let holdTimer;
+let progress = document.getElementById("progress");
+let success = document.getElementById("successMsg");
+let hearts = document.getElementById("hearts");
+const holdBtn = document.getElementById("holdBtn");
+const heart = holdBtn.querySelector(".heart");
+
+holdBtn.addEventListener("mousedown", startHold);
+holdBtn.addEventListener("touchstart", startHold, {passive:true});
+
+holdBtn.addEventListener("mouseup", cancelHold);
+holdBtn.addEventListener("mouseleave", cancelHold);
+holdBtn.addEventListener("touchend", cancelHold);
+
+function startHold() {
+    progress.style.animation = "rotate 2s linear infinite";
+    heart.classList.add('pulse');
+
+    holdTimer = setTimeout(() => {
+        success.style.display = 'block';
+        setTimeout(()=> success.style.opacity = '1', 10);
+        createHearts(12);
+        setTimeout(() => {
+            window.location.href = "surprise.html";
+        }, 1500);
+    }, 2000);
+}
+
+function cancelHold() {
+    clearTimeout(holdTimer);
+    progress.style.animation = "none";
+    heart.classList.remove('pulse');
+}
+
+function createHearts(count){
+    for(let i=0;i<count;i++){
+        const h = document.createElement('div');
+        h.className = 'heart-particle';
+        h.style.left = (50 + (Math.random()-0.5)*40)+'%';
+        h.style.top = (50 + (Math.random()-0.5)*20)+'%';
+        h.style.background = `radial-gradient(circle at 30% 30%, #fff 10%, hsl(${Math.random()*330+300},80%,70%))`;
+        h.style.borderRadius = '50%';
+        hearts.appendChild(h);
+        setTimeout(()=> h.remove(), 1000);
+    }
+}
+</script>
+
+</body>
+</html>
